@@ -1,38 +1,41 @@
-<h1>BURGERS</h1>
+<h1>EAT ALL THE BURGERS!!!</h1>
+<img src="/assets/img/burger.jpg" alt="juicy burger with many toppings">
+<div class='container-fluid'>
+    <div class='row'>
+        <div class='col-6'>
+            <h2>BURGERS NEEDING DEVOURING</h2>
+            <ul>
+                {{#each burgers}}
+                {{#unless devoured}}
+                {{> burger/burger-block devoured=true}}
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
 
-<h2>EAT THIS BURGER</h2>
+        <div class='col-6'>
+            <h2>DEVOURED BURGERS</h2>
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+                <li>
+                    {{burger_name}}
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
 
-<ul>
-    {{#each burgers}}
-    {{#unless devoured}}
-    {{!-- {{> burgers/burger-block devour=true}} --}}
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>DEVOURED</h2>
-
-<ul>
-    {{#each burgers}}
-    {{#if devoured}}
-    {{!-- {{> burgers/burger-block devour=false}} --}}
-    {{/if}}
-    {{/each}}
-</ul>
 
 <h2>What Burger Does Your Heart Desire?</h2>
 <form class="create-form">
 
     <div class="form-group">
-        <label for="ca">Burger Name:</label>
+        <label for="burg">Burger Name:</label>
         <input type="text" id="burg" name="name">
     </div>
 
-    <div class="form-group">
-        <label for="devoured">Eat it</label><br>
-        <input type="radio" name="devoured" value="1" checked> Eat<br>
-        <input type="radio" name="devoured" value="0"> wait
-    </div>
-
-    <button type="submit">Add Cat</button>
+    <button type="submit">Add Burger</button>
 </form>

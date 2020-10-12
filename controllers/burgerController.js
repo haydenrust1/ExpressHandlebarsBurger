@@ -13,7 +13,6 @@ router.get('/', function (req, res) {
 });
 
 router.post('/api/burgers/', function (req, res) {
-    console.log(req.body);
     burger.insertBurger(['burger_name', 'devoured'],
         [req.body.name, req.body.devoured],
         function (result) {
@@ -23,8 +22,10 @@ router.post('/api/burgers/', function (req, res) {
         });
 });
 
-router.put('/api/burger/:id', function (req, res) {
-    burger.updateBurger({ devoured: req.body.devoured },
+router.put('/api/burgers/:id', function (req, res) {
+    console.log(req);
+    burger.updateBurger(
+        { devoured: req.body.devoured },
         `id = ${req.params.id}`,
         function (result) {
             if (result.changedRows == 0) {
