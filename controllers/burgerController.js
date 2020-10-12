@@ -12,9 +12,10 @@ router.get('/', function (req, res) {
     })
 });
 
-router.post('/api/burgers', function (req, res) {
+router.post('/api/burgers/', function (req, res) {
+    console.log(req.body);
     burger.insertBurger(['burger_name', 'devoured'],
-        [req.body.burger_name, req.body.devoured],
+        [req.body.name, req.body.devoured],
         function (result) {
 
             res.json({ id: result.insertId });
@@ -33,3 +34,5 @@ router.put('/api/burger/:id', function (req, res) {
             }
         });
 });
+
+module.exports = router;
